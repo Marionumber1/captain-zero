@@ -1,6 +1,6 @@
 import pickle
 
-from game import heroes
+import heroes
 
 # Save files
 savefiles = [None, None, None, None]

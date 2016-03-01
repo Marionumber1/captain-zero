@@ -1,6 +1,6 @@
-from game import objects
-
 import pyglet
+
+import objects
 
 image = pyglet.image.load('../sprites/tiles/ground.png')
 

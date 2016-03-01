@@ -2,7 +2,17 @@ import os
 
 import pyglet
 
-from game import objects, graphics, heroes, ui, tiles
+import save
+import graphics		
+import objects		
+import music		
+		
+import heroes		
+import villains		
+import enemies	
+import items
+import tiles
+import ui
 
 # Current level and area
 current_level = None

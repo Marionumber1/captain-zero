@@ -3,7 +3,7 @@ import pyglet
 import sys
 sys.path.append("..")
 
-from game import objects
+import objects
 
 X_VEL = 150
 Y_VEL = 600

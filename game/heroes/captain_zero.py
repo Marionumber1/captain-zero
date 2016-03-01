@@ -1,4 +1,5 @@
-from game import heroes
+import heroes.objects
+import heroes.sprites
 
 class CaptainZero(heroes.objects.Player):
     def __init__(self, x, y, batch, group):

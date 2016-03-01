@@ -1,2 +1,1 @@
-from . import objects, sprites
-from .captain_zero import *
+from heroes.captain_zero import *

@@ -1,6 +1,8 @@
 import pyglet
 
-from game import level, worlds, graphics
+import level
+import worlds
+import graphics
 
 # Click events
 def on_story_mode_click():
