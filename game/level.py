@@ -167,7 +167,9 @@ keydict = {'left':False, 'right':False, 'up':False, 'down':False, 'select':False
 
 # Level update event loop
 def update(dt):
-    pass
+    # Call update function of each object in current area
+    for obj in current_area.objects:
+        if isinstance(obj, objects.PhysicalObject): obj.update(dt)
 
 # Key press event handlers
 def on_key_press(symbol, modifiers):

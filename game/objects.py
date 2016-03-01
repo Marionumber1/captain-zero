@@ -21,8 +21,12 @@ class PhysicalObject(pyglet.sprite.Sprite):
         self.delete = False
     def update(self, dt):
         # Velocity
-        self.x += velocity_x
-        self.y += velocity_y
+        self.x += self.velocity_x * dt
+        self.y += self.velocity_y * dt
+
+        # Acceleration
+        self.velocity_x += self.acc_x * dt
+        self.velocity_y += self.acc_y * dt
 
         # Change the bounding box
 
@@ -46,8 +50,9 @@ class LivingObject(PhysicalObject):
         self.direction = 0 # -1 - Left, 1 - Right
     def update(self, dt):
         # Update the PhysicalObject class
-        super().__init__(dt)
+        super().update(dt)
 
         # Check if the HP is depleted, and if so, call self.die()
         if self.hp <= 0:
-            self.die()
+            #self.die()
+            pass
