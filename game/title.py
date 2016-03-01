@@ -1,11 +1,12 @@
 import pyglet
 
 import level
+import worlds
 import graphics
 
 # Click events
 def on_story_mode_click():
-    pass
+    worlds.worlds[1]["1"].play()
 
 def on_instructions_click():
     area = level.get_current_level().areas[1]

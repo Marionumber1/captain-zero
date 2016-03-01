@@ -4,7 +4,7 @@ import level
 
 # Levels in each world
 special = {"title":level.Level("../levels/special/title.txt", 0)}
-world_1 = {}
+world_1 = {"1":level.Level("../levels/world1/1.txt",0)}
 world_2 = {}
 world_3 = {}
 world_4 = {}

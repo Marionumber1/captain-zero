@@ -10,3 +10,5 @@ class CaptainZero(heroes.objects.PlayerObject):
         self.images = heroes.sprites.captain_zero
     def on_load(self):
         pass
+    def on_unload(self):
+        pass
