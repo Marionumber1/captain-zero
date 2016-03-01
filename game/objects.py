@@ -1,7 +1,7 @@
 import pyglet
 
 class PhysicalObject(pyglet.sprite.Sprite):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, gravity=True, *args, **kwargs):
         # Initialize the sprite class
         super().__init__(*args, **kwargs)
 
@@ -19,6 +19,10 @@ class PhysicalObject(pyglet.sprite.Sprite):
 
         # Deletion status
         self.delete = False
+
+        # Whether gravity applies to this object
+        self.gravity = gravity
+
     def update(self, dt):
         # Velocity
         self.x += self.velocity_x * dt
@@ -28,11 +32,13 @@ class PhysicalObject(pyglet.sprite.Sprite):
         self.velocity_x += self.acc_x * dt
         self.velocity_y += self.acc_y * dt
 
-        # Change the bounding box
+    def check_collision(self, other):
+        if (self.x <= other.x+other.width and self.x+self.width >= other.x and
+                self.y <= other.y+other.height and self.y+self.height >= other.y):
+            self.collide(other)
 
-        # Handle object events
-
-        # Change the bounding box
+    def collide(self, other):
+        print("AHHHH")
 
 class LivingObject(PhysicalObject):
     def __init__(self, *args, **kwargs):
@@ -48,6 +54,7 @@ class LivingObject(PhysicalObject):
         
         # Create the object direction variable
         self.direction = 0 # -1 - Left, 1 - Right
+
     def update(self, dt):
         # Update the PhysicalObject class
         super().update(dt)
@@ -56,3 +63,13 @@ class LivingObject(PhysicalObject):
         if self.hp <= 0:
             #self.die()
             pass
+
+class Barrier(PhysicalObject):
+    def __init__(self, *args, **kwargs):
+        kwargs['gravity'] = False
+        # Initialize the PhysicalObject class
+        super().__init__(*args, **kwargs)
+
+    def update(self, dt):
+        # Update the PhysicalObject class
+        super().update(dt)

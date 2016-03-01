@@ -1,6 +1,6 @@
 import pyglet
 
-import level
+from game import level
 
 # Levels in each world
 special = {"title":level.Level("../levels/special/title.txt", 0)}

@@ -3,13 +3,12 @@ import pyglet
 import sys
 sys.path.append("..")
 
-import objects
+from game import objects
 
 X_VEL = 150
 Y_VEL = 600
-Y_ACC = 1200
 
-class PlayerObject(objects.LivingObject):
+class Player(objects.LivingObject):
     def __init__(self, *args, **kwargs):
         # Initialize the LivingObject class
         super().__init__(*args, **kwargs)
@@ -73,7 +72,6 @@ class PlayerObject(objects.LivingObject):
                 self.jumps += 1
                 self.jumping = True
                 self.jumpable = False
-                self.acc_y = -Y_ACC
                 self.velocity_y = Y_VEL
         else:
             self.jumpable = True

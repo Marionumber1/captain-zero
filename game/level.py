@@ -2,20 +2,14 @@ import os
 
 import pyglet
 
-import save
-import graphics
-import objects
-import music
-
-import heroes
-import villains
-import enemies
-import items
-import ui
+from game import objects, graphics, heroes, ui, tiles
 
 # Current level and area
 current_level = None
 current_area = None
+
+# Acceleration due to gravity
+GRAVITY = -1200
 
 def str2list(string):
     string = string.replace('[','')
@@ -76,6 +70,11 @@ class Area:
             # Heroes
             if name == "Player":
                 obj = heroes.CaptainZero(x=x, y=y, batch=self.batch, group=self.foreground)
+
+            # Objects
+            if name == "Ground":
+                obj = tiles.Ground(x=x, y=y, batch=self.batch, group=self.foreground)
+                print(isinstance(obj, objects.PhysicalObject))
 
             # Villains
 
@@ -167,9 +166,23 @@ keydict = {'left':False, 'right':False, 'up':False, 'down':False, 'select':False
 
 # Level update event loop
 def update(dt):
+    # Make all objects fall
+    for obj in current_area.objects:
+        if isinstance(obj, objects.PhysicalObject):
+            if obj.gravity: obj.acc_y = GRAVITY
+
+    # Check for collisions in our current area
+    for obj in current_area.objects:
+        if isinstance(obj, objects.PhysicalObject):
+            for obj2 in current_area.objects:
+                #print(obj, isinstance(obj2, objects.PhysicalObject), not (obj is obj2))
+                if isinstance(obj2, objects.PhysicalObject) and not (obj is obj2):
+                    obj.check_collision(obj2)
+
     # Call update function of each object in current area
     for obj in current_area.objects:
-        if isinstance(obj, objects.PhysicalObject): obj.update(dt)
+        if isinstance(obj, objects.PhysicalObject):
+            obj.update(dt)
 
 # Key press event handlers
 def on_key_press(symbol, modifiers):

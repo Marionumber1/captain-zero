@@ -1,7 +1,7 @@
 import pyglet
 
 # Window, objects, and batch
-window = pyglet.window.Window(caption="Captain Zero", width=640, height=480)
+window = pyglet.window.Window(caption="Captain Zero", width=960, height=540)
 batch = None
 
 # Window events

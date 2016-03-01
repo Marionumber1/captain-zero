@@ -1,9 +1,6 @@
 import pyglet
 
-import save
-import worlds
-import level
-import graphics
+from game import save, worlds, level, graphics
 
 # Current location
 location = 1 # 0 - World Map, 1 - Level
