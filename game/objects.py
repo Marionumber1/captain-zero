@@ -33,12 +33,26 @@ class PhysicalObject(pyglet.sprite.Sprite):
         self.velocity_y += self.acc_y * dt
 
     def check_collision(self, other):
-        if (self.x <= other.x+other.width and self.x+self.width >= other.x and
-                self.y <= other.y+other.height and self.y+self.height >= other.y):
+        # Calculate next X/Y of self and other
+        self_x = self.x + self.velocity_x * (1/120)
+        self_y = self.y + self.velocity_y * (1/120)
+        other_x = other.x + other.velocity_x * (1/120)
+        other_y = other.y + other.velocity_y * (1/120)
+        
+        # Check collision, and handle it
+        if (self_x <= other_x+other.width and self_x+self.width >= other_x and
+                self_y <= other_y+other.height and self_y+self.height >= other_y):
             self.collide(other)
 
     def collide(self, other):
-        print("AHHHH")
+        # Colliding with barrier
+        if isinstance(other, Barrier):
+            # Above barrier, so stop gravity
+            if self.y > other.y:
+                print("HI")
+                self.y = other.y + other.height
+                self.velocity_y = 0
+                self.acc_y = 0
 
 class LivingObject(PhysicalObject):
     def __init__(self, *args, **kwargs):
