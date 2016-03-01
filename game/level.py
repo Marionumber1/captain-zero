@@ -75,7 +75,7 @@ class Area:
             
             # Heroes
             if name == "Player":
-                pass
+                obj = heroes.CaptainZero(x=x, y=y, batch=self.batch, group=self.foreground)
 
             # Villains
 

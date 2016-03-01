@@ -11,6 +11,8 @@ class PhysicalObject(pyglet.sprite.Sprite):
         # Create the physics variables
         self.velocity_x = 0.0
         self.velocity_y = 0.0
+        self.acc_x = 0.0
+        self.acc_y = 0.0
 
         # Points
         self.points = 0
@@ -21,8 +23,6 @@ class PhysicalObject(pyglet.sprite.Sprite):
         # Velocity
         self.x += velocity_x
         self.y += velocity_y
-
-        # Gravity
 
         # Change the bounding box
 
