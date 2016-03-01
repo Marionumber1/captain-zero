@@ -49,10 +49,17 @@ class PhysicalObject(pyglet.sprite.Sprite):
         if isinstance(other, Barrier):
             # Above barrier, so stop gravity
             if self.y > other.y:
-                print("HI")
                 self.y = other.y + other.height
                 self.velocity_y = 0
                 self.acc_y = 0
+            # Hitting barrier from bottom, so stop jump
+            elif self.y < other.y:
+                self.y = other.y + other.height
+                self.velocity_y = 0
+                self.acc_y = 0
+            # Hitting from left or right, so stop walk
+            else:
+                self.velocity_x = 0
 
 class LivingObject(PhysicalObject):
     def __init__(self, *args, **kwargs):

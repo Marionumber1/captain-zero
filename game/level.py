@@ -176,6 +176,11 @@ keydict = {'left':False, 'right':False, 'up':False, 'down':False, 'select':False
 
 # Level update event loop
 def update(dt):
+    # Call update function of each object in current area
+    for obj in current_area.objects:
+        if isinstance(obj, objects.PhysicalObject):
+            obj.update(dt)
+    
     # Make all objects fall
     for obj in current_area.objects:
         if isinstance(obj, objects.PhysicalObject):
@@ -185,14 +190,8 @@ def update(dt):
     for obj in current_area.objects:
         if isinstance(obj, objects.PhysicalObject):
             for obj2 in current_area.objects:
-                #print(obj, isinstance(obj2, objects.PhysicalObject), not (obj is obj2))
                 if isinstance(obj2, objects.PhysicalObject) and not (obj is obj2):
                     obj.check_collision(obj2)
-
-    # Call update function of each object in current area
-    for obj in current_area.objects:
-        if isinstance(obj, objects.PhysicalObject):
-            obj.update(dt)
 
 # Key press event handlers
 def on_key_press(symbol, modifiers):
