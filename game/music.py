@@ -1,7 +1,7 @@
 import pyglet
 
 # Music sample names
-music = {'title':'../../../../../Users/George/Music/Hamilton (Original Broadway Cast Recording) [Explicit]/02-05- The Room Where It Happens.mp3'}
+music = {'title':'C:\\Users\\Public\\Music\\Sample Music\\Sleep Away.mp3'}
 
 # Current music player
 #current_player = None

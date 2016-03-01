@@ -5,6 +5,10 @@ sys.path.append("..")
 
 import objects
 
+X_VEL = 150
+Y_VEL = 600
+Y_ACC = 1200
+
 class PlayerObject(objects.LivingObject):
     def __init__(self, *args, **kwargs):
         # Initialize the LivingObject class
@@ -18,6 +22,8 @@ class PlayerObject(objects.LivingObject):
         self.jumping = False
         self.dashing = False
         self.ducking = False
+        self.jumps = 0
+        self.jumpable = 0
 
         self.walk_image = 0
         self.jump_image = 0
@@ -52,8 +58,22 @@ class PlayerObject(objects.LivingObject):
         # Left key pressed
         if self.keys['left'] == True:
             self.walking = True
-            self.velocity_x = -50
+            self.velocity_x = -X_VEL
         # Right key pressed
         elif self.keys['right'] == True:
             self.walking = True
-            self.velocity_x = 50
+            self.velocity_x = X_VEL
+        # No horizontal movement key pressed
+        else:
+            self.walking = False
+            self.velocity_x = 0
+
+        if self.keys['up'] == True:
+            if self.jumps < 2 and self.jumpable:
+                self.jumps += 1
+                self.jumping = True
+                self.jumpable = False
+                self.acc_y = -Y_ACC
+                self.velocity_y = Y_VEL
+        else:
+            self.jumpable = True
