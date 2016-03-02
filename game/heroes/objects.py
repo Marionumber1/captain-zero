@@ -76,6 +76,10 @@ class Player(objects.LivingObject):
         else:
             self.jumpable = True
 
+        # Move camera
+        pyglet.gl.glViewport(-int(self.x), 0, 960, 540)
+        print("YO")
+
     def collide(self, other, right=False, left=False, above=False, below=False):
         super().collide(other, right=right, left=left, above=above, below=below)
 
