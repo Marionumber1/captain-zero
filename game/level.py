@@ -83,8 +83,15 @@ class Area:
 
             # Objects
             if name == "Ground":
-                obj = tiles.Ground(x=x, y=y, batch=self.batch, group=self.foreground)
-                print(isinstance(obj, objects.PhysicalObject))
+                properties = str2list(properties)
+                n_horiz = int(properties[0])
+                n_vert = int(properties[1])
+                print(n_horiz, n_vert)
+                
+                for i in range(0, n_vert):
+                    for j in range(0, n_horiz):
+                        if obj != None: self.objects.append(obj)
+                        obj = tiles.Ground(x=x+(32*j), y=y+(32*i), batch=self.batch, group=self.foreground)
 
             # Villains
 
