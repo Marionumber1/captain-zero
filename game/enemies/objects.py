@@ -14,7 +14,7 @@ class Enemy(objects.LivingObject):
         super().__init__(*args, **kwargs)
 
         # Set walking velocity to the left
-        self.velocity_x = -X_VEL
+        self.velocity_x = X_VEL
         
         # Create the player move variables   
         self.walking = False
@@ -29,3 +29,11 @@ class Enemy(objects.LivingObject):
     def update(self, dt):
         # Update the LivingObject class
         super().update(dt)
+
+   # def collide(self, other, right=False, left=False, above=False, below=False):
+        #super().collide(other, right=right, left=left, above=above, below=below)
+
+        #if left:
+        #     self.velocity_x = X_VEL
+        # elif right:
+        #     self.velocity_x = X_VEL

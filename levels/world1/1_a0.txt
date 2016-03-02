@@ -1,6 +1,6 @@
 Background 0 0 ../sprites/backgrounds/title/title.png
 MusicPlayer 0 0 title
 Player 0 100
-Ground 0 0 [16,1]
+Ground 0 0 [64,1]
 Ground 128 92 [5,1]
 InfinityMook 64 32

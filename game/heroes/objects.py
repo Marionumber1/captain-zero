@@ -8,6 +8,9 @@ import objects
 X_VEL = 150
 Y_VEL = 600
 
+BORDER_X = 150
+BORDER_Y = 150
+
 class Player(objects.LivingObject):
     def __init__(self, *args, **kwargs):
         # Initialize the LivingObject class
@@ -28,6 +31,7 @@ class Player(objects.LivingObject):
         self.jump_image = 0
         self.dash_image = 0
         self.swim_image = 0
+        self.camera_x = 0
     def on_key_press(self, symbol, modifiers):
         if symbol == pyglet.window.key.LEFT:
             self.keys['left'] = True
@@ -76,9 +80,14 @@ class Player(objects.LivingObject):
         else:
             self.jumpable = True
 
-        # Move camera
-        pyglet.gl.glViewport(-int(self.x), 0, 960, 540)
-        print("YO")
+        if self.velocity_x < 0:
+            self.camera_x = min(self.camera_x, self.x)
+        else:
+            self.camera_x = max(self.camera_x, self.x-(960-2*BORDER_X))
+
+        self.camera_x = max(self.camera_x, BORDER_X)
+
+        pyglet.gl.glViewport(-int(self.camera_x-BORDER_X), -int(self.y-BORDER_Y), 960, 540)
 
     def collide(self, other, right=False, left=False, above=False, below=False):
         super().collide(other, right=right, left=left, above=above, below=below)

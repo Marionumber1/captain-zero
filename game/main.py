@@ -24,7 +24,6 @@ def update(dt):
 save.init_savefiles()
 worlds.init_worlds()
 level.init_levels()
-graphics.init_graphics()
 
 # Begin playing the title screen
 worlds.worlds[0]["title"].play()
