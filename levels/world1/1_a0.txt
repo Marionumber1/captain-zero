@@ -8,3 +8,4 @@ Ground 96 0
 Ground 128 0
 Ground 96 128
 Ground 128 128
+InfinityMook 64 32

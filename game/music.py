@@ -25,8 +25,8 @@ class MusicPlayer(pyglet.media.Player):
             if self.sample_name != current_player.sample_name:
                 current_player.pause()
                 self.seek(0.0)
-                super().play()
+                #super().play()
                 current_player = self
         except:
-            super().play()
+            #super().play()
             current_player = self
