@@ -33,7 +33,10 @@ class Enemy(objects.LivingObject):
     def collide(self, other, right=False, left=False, above=False, below=False):
         super().collide(other, right=right, left=left, above=above, below=below)
 
-        if left:
-             self.velocity_x = -X_VEL
-        if right:
-             self.velocity_x = X_VEL
+        if isinstance(other, objects.Barrier):
+            if left:
+                print(x)
+                self.velocity_x = -X_VEL*16
+            if right:
+                print(y)
+                self.velocity_x = X_VEL

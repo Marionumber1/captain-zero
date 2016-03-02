@@ -54,7 +54,7 @@ class PhysicalObject(pyglet.sprite.Sprite):
             if above:
                 self.y = other.y + other.height
                 self.velocity_y = max(0, self.velocity_y)
-                self.acc_y = 0git st
+                self.acc_y = 0
             # Hitting barrier from bottom, so stop jump
             elif below:
                 self.y = other.y - self.height

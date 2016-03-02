@@ -88,6 +88,7 @@ class Player(objects.LivingObject):
         self.camera_x = max(self.camera_x, BORDER_X)
 
         pyglet.gl.glViewport(-int(self.camera_x-BORDER_X), -int(self.y-BORDER_Y), 960, 540)
+        #pyglet.gl.glOrtho(self.camera_x, self.camera_x + 960, self.y - BORDER_Y, self.y - BORDER_Y + 540, -1.0, 1.0)
 
     def collide(self, other, right=False, left=False, above=False, below=False):
         super().collide(other, right=right, left=left, above=above, below=below)
