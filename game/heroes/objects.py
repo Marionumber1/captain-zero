@@ -75,3 +75,9 @@ class Player(objects.LivingObject):
                 self.velocity_y = Y_VEL
         else:
             self.jumpable = True
+
+    def collide(self, other, right=False, left=False, above=False, below=False):
+        super().collide(other, right=right, left=left, above=above, below=below)
+
+        if above:
+            self.jumps = 0

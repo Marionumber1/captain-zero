@@ -19,7 +19,7 @@ current_level = None
 current_area = None
 
 # Acceleration due to gravity
-GRAVITY = -1200
+GRAVITY = -1500
 
 def str2list(string):
     string = string.replace('[','')
