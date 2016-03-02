@@ -89,6 +89,8 @@ class Area:
             # Villains
 
             # Enemies
+            if name == "InfinityMook":
+                obj = enemies.InfinityMook(x=x, y=y, batch=self.batch, group=self.foreground)
 
             # NPCs
 
